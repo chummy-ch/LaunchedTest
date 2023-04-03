@@ -1,0 +1,84 @@
+buildscript {
+    ext {
+
+        gradleDependencies = [
+                compileSdk: 33,
+                targetSdk : 33,
+                minSdk    : 26
+        ]
+
+        kotlinVersion = "1.7.10"
+
+        //Coroutines RN https://github.com/Kotlin/kotlinx.coroutines
+        coroutines = [
+                lib: "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+        ]
+
+        //AndroidX core RN https://developer.android.com/jetpack/androidx/releases/core
+        androidX = [
+                lib: "androidx.core:core-ktx:1.9.0"
+        ]
+
+        //Lifecycle RN https://developer.android.com/jetpack/androidx/releases/lifecycle#2.5.1
+        lifecycleVersion = "2.5.1"
+        lifecycle = [
+                viewModelCompose: "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
+        ]
+
+        hiltVersion = "2.44"
+        hiltDependencies = [
+                //Hilt RN https://dagger.dev/hilt/gradle-setup
+                lib      : "com.google.dagger:hilt-android:$hiltVersion",
+                kapt     : "com.google.dagger:hilt-android-compiler:$hiltVersion",
+                classpath: "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion",
+        ]
+
+        composeUiVersion = "1.2.0-rc03"
+        conposeCompillerVersion = "1.3.0"
+        compose = [
+                //Compose activity RN https://developer.android.com/jetpack/androidx/releases/activity#version_160_3
+                activity        : "androidx.activity:activity-compose:1.6.0",
+                //Compose UI RN https://developer.android.com/jetpack/compose/setup
+                ui              : "androidx.compose.ui:ui:$composeUiVersion",
+                material        : "androidx.compose.material:material:$composeUiVersion",
+                runtime         : "androidx.compose.runtime:runtime:$composeUiVersion",
+                foundation      : "androidx.compose.foundation:foundation:$composeUiVersion",
+                foundationLayout: "androidx.compose.foundation:foundation-layout:$composeUiVersion",
+                //Compose tooling RN https://developer.android.com/jetpack/compose/tooling
+                uiToolingPreview: "androidx.compose.ui:ui-tooling-preview:$composeUiVersion",
+                //Constraint layout https://developer.android.com/jetpack/compose/layouts/constraintlayout
+                constraintLayout: "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+        ]
+
+        //Accompanist RN https://github.com/google/accompanist/releases
+        accompanistVersion = "0.26.5-rc"
+        accompanist = [
+                flowLayout: "com.google.accompanist:accompanist-flowlayout:$accompanistVersion",
+        ]
+
+        //Coil RN https://github.com/coil-kt/coil/blob/main/CHANGELOG.md
+        coilVersion = "2.2.2"
+        coil = [
+                img: "io.coil-kt:coil-compose:$coilVersion",
+                svg: "io.coil-kt:coil-svg:$coilVersion"
+        ]
+
+        //Retrofit RN https://github.com/square/retrofit/blob/master/CHANGELOG.md
+        retrofitVersion = "2.9.0"
+        retrofit = [
+                lib          : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+                jsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+        ]
+    }
+
+    dependencies {
+        classpath hiltDependencies.classpath
+    }
+}
+
+plugins {
+    id 'com.android.application' version '7.3.0' apply false
+    id 'com.android.library' version '7.3.0' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10' apply false
+}
